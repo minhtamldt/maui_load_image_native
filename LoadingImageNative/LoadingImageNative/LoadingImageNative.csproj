@@ -30,6 +30,9 @@
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
@@ -51,4 +54,24 @@
     <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.191-beta" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Platforms\Android\Resources\drawable-xhdpi\" />
+    <None Remove="Platforms\Android\Resources\drawable-xxhdpi\" />
+    <None Remove="Platforms\iOS\Resources\" />
+    <None Remove="Platforms\iOS\Resources\apple%403x.png" />
+    <None Remove="Platforms\iOS\Resources\apple%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Platforms\Android\Resources\drawable-xhdpi\" />
+    <Folder Include="Platforms\Android\Resources\drawable-xxhdpi\" />
+    <Folder Include="Platforms\iOS\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Platforms\iOS\Resources\apple%402x.png" >
+      <Link>Resources\apple%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="Platforms\iOS\Resources\apple%403x.png" >
+      <Link>Resources\apple%403x.png</Link>
+    </BundleResource>
+  </ItemGroup>
 </Project>

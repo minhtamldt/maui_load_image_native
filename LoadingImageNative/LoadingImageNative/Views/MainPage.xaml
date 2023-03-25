@@ -10,7 +10,7 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-      <Image Source="prism.png"
+      <Image Source="apple.png"
              SemanticProperties.Description="Cute dot net bot waving hi to you!"
              HeightRequest="150"
              HorizontalOptions="Center" />
